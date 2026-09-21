@@ -238,10 +238,10 @@ class BaseWindow : public gin_helper::TrackableObject<BaseWindow>,
   bool GetWindowButtonVisibility() const;
   void SetWindowButtonPosition(std::optional<gfx::Point> position);
   std::optional<gfx::Point> GetWindowButtonPosition() const;
+#endif
 
   bool IsHiddenInMissionControl();
   void SetHiddenInMissionControl(bool hidden);
-#endif
 
   void SetTouchBar(std::vector<gin_helper::PersistentDictionary> items);
   void RefreshTouchBarItem(const std::string& item_id);

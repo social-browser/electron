@@ -953,7 +953,6 @@ std::optional<gfx::Point> BaseWindow::GetWindowButtonPosition() const {
 }
 #endif
 
-#if BUILDFLAG(IS_MAC)
 bool BaseWindow::IsHiddenInMissionControl() {
   return window_->IsHiddenInMissionControl();
 }
@@ -961,7 +960,6 @@ bool BaseWindow::IsHiddenInMissionControl() {
 void BaseWindow::SetHiddenInMissionControl(bool hidden) {
   window_->SetHiddenInMissionControl(hidden);
 }
-#endif
 
 void BaseWindow::SetTouchBar(
     std::vector<gin_helper::PersistentDictionary> items) {
@@ -1405,12 +1403,10 @@ void BaseWindow::BuildPrototype(v8::Isolate* isolate,
       .SetMethod("setVibrancy", &BaseWindow::SetVibrancy)
       .SetMethod("setBackgroundMaterial", &BaseWindow::SetBackgroundMaterial)
 
-#if BUILDFLAG(IS_MAC)
       .SetMethod("isHiddenInMissionControl",
                  &BaseWindow::IsHiddenInMissionControl)
       .SetMethod("setHiddenInMissionControl",
                  &BaseWindow::SetHiddenInMissionControl)
-#endif
       .SetMethod("_setTouchBarItems", &BaseWindow::SetTouchBar)
       .SetMethod("_refreshTouchBarItem", &BaseWindow::RefreshTouchBarItem)
       .SetMethod("_setEscapeTouchBarItem", &BaseWindow::SetEscapeTouchBarItem)

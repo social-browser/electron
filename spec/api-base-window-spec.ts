@@ -186,6 +186,17 @@ describe('BaseWindow module', () => {
     });
   });
 
+  ifdescribe(process.platform !== 'darwin')('Mission Control APIs', () => {
+    afterEach(closeAllWindows);
+
+    it('are exposed as no-ops', () => {
+      const w = new BaseWindow({ show: false });
+      expect(w.isHiddenInMissionControl()).to.be.false();
+      expect(() => w.setHiddenInMissionControl(true)).to.not.throw();
+      expect(w.isHiddenInMissionControl()).to.be.false();
+    });
+  });
+
   describe('BaseWindow.isModal()', () => {
     afterEach(closeAllWindows);
 

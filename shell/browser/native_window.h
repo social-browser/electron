@@ -250,11 +250,10 @@ class NativeWindow : public views::WidgetDelegate {
   virtual void UpdateFrame() = 0;
 #endif
 
-// whether windows should be ignored by mission control
-#if BUILDFLAG(IS_MAC)
-  virtual bool IsHiddenInMissionControl() const = 0;
-  virtual void SetHiddenInMissionControl(bool hidden) = 0;
-#endif
+  // Whether windows should be ignored by Mission Control.
+  // Unsupported platforms expose these as no-ops for API consistency.
+  virtual bool IsHiddenInMissionControl() const { return false; }
+  virtual void SetHiddenInMissionControl(bool) {}
 
   // Touchbar API
   virtual void SetTouchBar(std::vector<gin_helper::PersistentDictionary> items);
